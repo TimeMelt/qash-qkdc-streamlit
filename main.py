@@ -5,7 +5,7 @@ import super_cirq as s_cirq
 import qkdc_helper as helper
 import numpy as np
 
-logo = "qash-red.png"
+logo = "img/ui-streamlit-red.png"
 
 st.set_page_config(
     page_title="Qash-QKDC",
@@ -55,7 +55,7 @@ def runHash(pepp):
             output = p_cirq.qxBerryCirq(input, num_wires, pepper)
         st.session_state.output_hash = helper.processOutput(output, output_mode)
 
-main_panel.header("Qash - QKDC", divider='rainbow')
+main_panel.header("Qash-QKDC (Simulator)", divider='rainbow')
 input_string = main_panel.text_area("Enter String to Hash", value="", on_change=clearOutput)
 output_string = main_panel.text_area("Output Hash Value", value=st.session_state.output_hash)
 run_button = main_panel.button("Run Hash Simulator", on_click=runHash, args=[pepper])
