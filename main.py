@@ -5,7 +5,7 @@ import super_cirq as s_cirq
 import qkdc_helper as helper
 import numpy as np
 
-logo = "img/ui-streamlit-red.png"
+logo = "./img/ui-streamlit-red.png"
 
 st.set_page_config(
     page_title="Qash-QKDC",
