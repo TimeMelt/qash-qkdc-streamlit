@@ -21,7 +21,7 @@ streamlit ui for qash-qkdc (quantum key derivation circuits)
     - [PennyLane research paper](https://arxiv.org/abs/1811.04968): 
         
             Ville Bergholm et al. *PennyLane: Automatic differentiation of hybrid quantum-classical computations.* 2018. arXiv:1811.04968
-- acceleration using [JAX]("https://github.com/google/jax") library: 
+- acceleration using [JAX](https://github.com/google/jax) library: 
     - JAX citation:
 
             @software{
