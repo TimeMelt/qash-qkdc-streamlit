@@ -16,7 +16,7 @@ streamlit ui for qash-qkdc (quantum key derivation circuits)
 - this streamlit app is based on the jupyter notebook provided [here](https://github.com/TimeMelt/qash-qkdc)
  
 #### Credits:
-- ui libraries provided by [Streamlit]("https://github.com/streamlit/streamlit")
+- ui libraries provided by [Streamlit](https://github.com/streamlit/streamlit)
 - quantum libraries provided by [PennyLane](https://github.com/PennyLaneAI/pennylane): 
     - [PennyLane research paper](https://arxiv.org/abs/1811.04968): 
         
