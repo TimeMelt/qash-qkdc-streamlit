@@ -10,7 +10,8 @@ streamlit ui for qash-qkdc (quantum key derivation circuits)
 - clone this repo
 - navigate to cloned repository
 - install packages from requirements.txt and run command below (inside python env)
-  - streamlit run main.py
+
+      streamlit run main.py
 
 ### Jupyter Notebook:
 - this streamlit app is based on the jupyter notebook provided [here](https://github.com/TimeMelt/qash-qkdc)
