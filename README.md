@@ -7,10 +7,12 @@ streamlit ui for qash-qkdc (quantum key derivation circuits)
 [![qash-qkdc-ui](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://qkdc-ui.streamlit.app/)
   
 ### Local Deployment Instructions:
-- clone this repo
-- navigate to cloned repository
-- install packages from requirements.txt and run command below (inside python env)
-
+- activate python environment
+- execute commands below...
+    
+      git clone https://github.com/TimeMelt/qash-qkdc-streamlit.git
+      cd qash-qkdc-streamlit
+      pip install -r requirements.txt
       streamlit run main.py
 
 ### Jupyter Notebook:
