@@ -42,10 +42,14 @@ def processOutput(output, format):
     return output_string
 
 # convert chars to unicode
-def createData(text): 
+def createData(text, sim): 
     arr = jnp.array([])
-    for ch in text:
-        arr = jnp.append(arr, ord(ch))
+    if sim != 'gaussian':
+        for ch in text:
+            arr = jnp.append(arr, ord(ch))
+    else:
+        for ch in text:
+            arr = jnp.append(arr, ord(ch)/100) # divide ord() by 100 to bring values matrix back into positive definite
     return arr
 
 # pad data based on desired hash length
@@ -59,7 +63,7 @@ def padData(txt_arr, pad_count):
         return new_arr
 
 # convert to unicode and pad
-def createAndPad(text, pad_count):
-    arr = createData(text)
+def createAndPad(text, pad_count, sim):
+    arr = createData(text, sim)
     arr1 = padData(arr, pad_count)
     return arr1

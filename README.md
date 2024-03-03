@@ -5,6 +5,15 @@ streamlit ui for qash-qkdc (quantum key derivation circuits)
 
 ### Web UI (streamlit.app): 
 [![qash-qkdc-ui](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://qkdc-ui.streamlit.app/)
+
+### Updates:
+- google cirq simulator now supported
+    - options -> device -> cirq
+- gaussian hash circuit mode now available
+    - gaussian implementation using strawberryfields sdk
+    - options -> simulator -> gaussian
+- partial JIT implemented for superconductor circuit
+    - allows for faster performance
   
 ### Local Deployment Instructions:
 - activate python environment
@@ -16,7 +25,8 @@ streamlit ui for qash-qkdc (quantum key derivation circuits)
       streamlit run main.py
 
 ### Jupyter Notebook:
-- this streamlit app is based on the jupyter notebook provided [here](https://github.com/TimeMelt/qash-qkdc)
+- this streamlit app is based on the [qash-qkdc](https://github.com/TimeMelt/qash-qkdc) jupyter notebook
+- gaussian mode based on [GausQash](https://github.com/TimeMelt/GausQash) jupyter notebook
  
 #### Credits:
 - ui libraries provided by [Streamlit](https://github.com/streamlit/streamlit)
@@ -32,3 +42,13 @@ streamlit ui for qash-qkdc (quantum key derivation circuits)
     > url = {http://github.com/google/jax},
     > version = {0.3.13},
     > year = {2018},
+
+- GausQash quantum libraries provided by [StrawberryFields](https://github.com/XanaduAI/strawberryfields):
+    > Nathan Killoran, Josh Izaac, Nicolás Quesada, Ville Bergholm, Matthew Amy, and
+    > Christian Weedbrook. "Strawberry Fields: A Software Platform for Photonic Quantum Computing",
+    > [Quantum, 3, 129](https://quantum-journal.org/papers/q-2019-03-11-129/) (2019).
+
+    > Thomas R. Bromley, Juan Miguel Arrazola, Soran Jahangiri, Josh Izaac, Nicolás Quesada,
+    > Alain Delgado Gran, Maria Schuld, Jeremy Swinarton, Zeid Zabaneh, and Nathan Killoran.
+    > "Applications of Near-Term Photonic Quantum Computers: Software and Algorithms",
+    > [Quantum Sci. Technol. 5 034010](https://iopscience.iop.org/article/10.1088/2058-9565/ab8504/meta) (2020).
