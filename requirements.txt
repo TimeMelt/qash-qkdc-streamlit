@@ -3,3 +3,4 @@ jaxlib
 pennylane
 pennylane-sf
 pennylane-cirq
+pennylane-qiskit
