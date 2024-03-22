@@ -1,7 +1,5 @@
 jax
 jaxlib
-pyscf
 pennylane
 pennylane-sf
 pennylane-cirq
-pennylane-qiskit
