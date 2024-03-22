@@ -9,9 +9,6 @@ def qxHashCirq(input, num_wires, seed, pepper, device, shots):
     key = random.PRNGKey(seed)
     if device == 'default':
         qdev = qml.device('default.qubit.jax', wires=num_wires, shots=shots, prng_key=key)
-    elif device == 'qiskit':
-        backend = helper.chooseBackend(shots)
-        qdev = qml.device("qiskit.aer", wires=num_wires, shots=shots, backend=backend)
     else:
         qdev = qml.device('cirq.simulator', wires=num_wires, shots=shots)
 

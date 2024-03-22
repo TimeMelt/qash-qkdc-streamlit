@@ -46,7 +46,7 @@ pad_length_option = side_panel.number_input("Length of Input Padding", value=0, 
 hash_precision = side_panel.selectbox("Hash Precision",('double','single'))
 simulator_option = side_panel.selectbox("Simulator",('superconductor','fock', 'gaussian'),on_change=clearOutput)
 if simulator_option == "superconductor":
-    device_option = side_panel.selectbox("Device",('default','cirq','qiskit'),on_change=clearOutput)
+    device_option = side_panel.selectbox("Device",('default','cirq'),on_change=clearOutput)
     if device_option != 'default':
         shots = side_panel.number_input("Shots", value=0, format="%d")
     else: 

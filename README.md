@@ -9,8 +9,6 @@ streamlit ui for qash-qkdc (quantum key derivation circuits)
 ### Updates:
 - support for gradient calculation
 - single and double precision modes 
-- ibm qiskit simulator support added
-    - options -> device -> qiskit
 - google cirq simulator now supported
     - options -> device -> cirq
 - gaussian hash circuit mode now available
