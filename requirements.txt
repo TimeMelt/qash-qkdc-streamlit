@@ -1,3 +1,5 @@
+qiskit<0.46
+pennylane-qiskit
 jax
 jaxlib
 pennylane
