@@ -18,8 +18,12 @@ st.set_page_config(
 if 'output_hash' not in st.session_state:
     st.session_state.output_hash = ''
 
+if 'grad_hash' not in st.session_state:
+    st.session_state.grad_hash = ''
+
 def clearOutput():
     st.session_state.output_hash = ''
+    st.session_state.grad_hash = ''
 
 def convertPepperToArr(pepp):
     pepper = pepp.split(",")
@@ -39,46 +43,52 @@ side_panel.title("Options")
 backend_details = side_panel.toggle("Show Runtime Details")
 seed_option = side_panel.number_input("Seed", value=0, format="%d")
 pad_length_option = side_panel.number_input("Length of Input Padding", value=0, format="%d")
+hash_precision = side_panel.selectbox("Hash Precision",('double','single'))
 simulator_option = side_panel.selectbox("Simulator",('superconductor','fock', 'gaussian'),on_change=clearOutput)
 if simulator_option == "superconductor":
-    device_option = side_panel.selectbox("Device",('default','cirq'),on_change=clearOutput)
+    device_option = side_panel.selectbox("Device",('default','cirq','qiskit'),on_change=clearOutput)
+    if device_option != 'default':
+        shots = side_panel.number_input("Shots", value=0, format="%d")
+    else: 
+        shots = None
+elif simulator_option == "fock":
+    shots = side_panel.number_input("Shots", value=1, min_value=1, format="%d")
 output_mode = side_panel.selectbox("Output Mode",('hex','base64'))
 if simulator_option != 'gaussian':
     pepper = side_panel.text_input("Pepper (comma-separated floats)", value="")
 else:
     pepper = None
 
-def runHash(pepp):
+def runHash(pepp, shots):
     with st.spinner("Loading Hash, Please Wait..."):
+        if shots == 0:
+            shots = None
         if pepp:
-            pepper_arr = convertPepperToArr(pepp)
+            pepper_arr = convertPepperToArr(pepp).astype("float64")
         else:
             pepper_arr = None
         num_wires = len(input_string)
         input = helper.createAndPad(input_string, pad_length_option, simulator_option)
         if simulator_option == 'superconductor':
             input = input.astype('float64')
-            if pepper_arr:
-                pepper = pepper_arr.astype("float64")
-            else:
-                pepper = None
-            output = s_cirq.qxHashCirq(input, num_wires, seed_option, pepper, device_option)
-            st.session_state.output_hash = helper.processOutput(output, output_mode)
+            pepper = pepper_arr
+            output = s_cirq.qxHashCirq(input, num_wires, seed_option, pepper, device_option, shots)
+            st.session_state.output_hash = helper.processOutput(output, output_mode, hash_precision)
+            st.session_state.grad_hash = helper.calcGradHash(output, output_mode, hash_precision)
         elif simulator_option == 'fock':
             input = jnp.array(input).astype('float64')
-            if pepper_arr:
-                pepper = pepper_arr.astype("float64")
-            else:
-                pepper = None
-            output = p_cirq.qxBerryCirq(input, num_wires, pepper)
-            st.session_state.output_hash = helper.processOutput(output, output_mode)
+            pepper = pepper_arr
+            output = p_cirq.qxBerryCirq(input, num_wires, pepper, shots)
+            st.session_state.output_hash = helper.processOutput(output, output_mode, hash_precision)
+            st.session_state.grad_hash = helper.calcGradHash(output, output_mode, hash_precision)
         elif simulator_option == 'gaussian':
             input = np.array(input).astype('float64')
             output = gaus.qxGausCirq(input, num_wires)
             out_list = np.array([])
             for i in range(num_wires):
                 out_list = np.append(out_list, output.state.number_expectation(modes=[i]))
-            st.session_state.output_hash = helper.processOutput(out_list, output_mode)
+            st.session_state.output_hash = helper.processOutput(out_list, output_mode, hash_precision)
+            st.session_state.grad_hash = helper.calcGradHash(out_list, output_mode, hash_precision)
         else:
             st.session_state.output_hash = "DEVICE ERROR"
 
@@ -93,7 +103,8 @@ else:
     main_panel.header("GausQash (Gaussian)", divider='rainbow')
 input_string = main_panel.text_area("Enter String to Hash", value="", on_change=clearOutput)
 output_string = main_panel.text_area("Output Hash Value", value=st.session_state.output_hash)
-run_button = main_panel.button("Run Hash Simulator", on_click=runHash, args=[pepper])
+grad_string = main_panel.text_area("Gradient Hash Value", value=st.session_state.grad_hash)
+run_button = main_panel.button("Run Hash Simulator", on_click=runHash, args=[pepper,shots])
 if backend_details:
     main_panel.divider()
     if simulator_option == 'gaussian':

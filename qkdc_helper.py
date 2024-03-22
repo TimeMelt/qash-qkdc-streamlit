@@ -18,27 +18,34 @@ def getBackend():
     return xla_bridge.get_backend().platform
 
 # process output of quantum circuits into proper hash
-def processOutput(output, format):
+def processOutput(output, format, float_mode):
     hex_params = {
-        "unpack_long_long": '<Q',
+        "unpack_long_long": '<q',
+        "unpack_long": '<l',
         "pack_double": '<d',
+        "pack_float": '<f',
     }
     output_alt = []
-    for value in output: # process complex into hex
+    for value in output: # process into hex
         val_alt = value*100
         if val_alt < 0:
-            output_alt.append(hex(struct.unpack(hex_params['unpack_long_long'], struct.pack(hex_params['pack_double'], -val_alt))[0]))
+            if float_mode == 'single':
+                output_alt.append(hex(struct.unpack(hex_params['unpack_long'], struct.pack(hex_params['pack_float'], -val_alt))[0]))
+            else: 
+                output_alt.append(hex(struct.unpack(hex_params['unpack_long_long'], struct.pack(hex_params['pack_double'], -val_alt))[0]))
         else:
-            output_alt.append(hex(struct.unpack(hex_params['unpack_long_long'], struct.pack(hex_params['pack_double'], val_alt))[0]))
+            if float_mode == 'single':
+                output_alt.append(hex(struct.unpack(hex_params['unpack_long'], struct.pack(hex_params['pack_float'], val_alt))[0]))
+            else: 
+                output_alt.append(hex(struct.unpack(hex_params['unpack_long_long'], struct.pack(hex_params['pack_double'], val_alt))[0]))
     output_string = ''.join(output_alt)
     output_string = output_string.replace('0x', "") # remove hex markers
     output_string = output_string.replace(output_string[:4], "", 1) # remove chars for increased hash security 
-    if format == 'hex':
-        pass
-    elif format == 'base64':
+    if format == 'base64':
         output_string = b2a_base64(bytes(output_string, 'utf-8')).decode('utf-8')# convert to base64
-    else:
-        print("invalid format...")
+        output_string = output_string[::-1]
+        output_string = output_string.replace(output_string[:3], "", 1)
+        output_string = output_string[::-1]
     return output_string
 
 # convert chars to unicode
@@ -67,3 +74,21 @@ def createAndPad(text, pad_count, sim):
     arr = createData(text, sim)
     arr1 = padData(arr, pad_count)
     return arr1
+
+def chooseBackend(shots):
+    if shots is None:
+        backend = 'statevector_simulator'
+    else:
+        backend = "qasm_simulator"
+    return backend
+
+def calcGradHash(input, mode, fl):
+    x = jnp.array(input)
+    dx_new = 0
+    for i in range(len(input)-1):
+        dx = x[i+1] * x[i]
+        dx_new = dx_new + dx
+    y = x**2 * len(input)
+    dydx = jnp.gradient(y, dx_new)
+    output = processOutput(dydx, mode, fl)
+    return output
