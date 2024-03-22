@@ -58,6 +58,7 @@ if simulator_option != 'gaussian':
     pepper = side_panel.text_input("Pepper (comma-separated floats)", value="")
 else:
     pepper = None
+    shots = None
 
 def runHash(pepp, shots):
     with st.spinner("Loading Hash, Please Wait..."):
