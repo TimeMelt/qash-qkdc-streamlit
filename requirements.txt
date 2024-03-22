@@ -1,6 +1,6 @@
 jax
 jaxlib
-numpy
+pyscf
 pennylane
 pennylane-sf
 pennylane-cirq
