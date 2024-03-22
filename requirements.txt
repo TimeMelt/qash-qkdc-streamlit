@@ -1,8 +1,8 @@
 jax
 jaxlib
 numpy
+qiskit<0.46
 pennylane
 pennylane-sf
 pennylane-cirq
-qiskit<0.46
 pennylane-qiskit
