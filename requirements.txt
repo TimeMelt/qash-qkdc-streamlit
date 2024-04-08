@@ -1,6 +1,6 @@
-jax>0.3.20
+jax
 jaxlib
 pennylane
 pennylane-sf
 pennylane-cirq
-numpy<1.24
+numpy
