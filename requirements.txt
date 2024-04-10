@@ -1,4 +1,5 @@
+numpy<1.24
 pennylane-sf
 pennylane-cirq
-jax
+jax<=0.4.26
 jaxlib
