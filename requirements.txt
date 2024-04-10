@@ -1,6 +1,4 @@
-jax
-jaxlib
-pennylane
 pennylane-sf
 pennylane-cirq
-numpy
+jax
+jaxlib
