@@ -1,5 +1,5 @@
-jax
-jaxlib
 pennylane==0.29
 pennylane-cirq
 pennylane-sf
+jax
+jaxlib
