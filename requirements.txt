@@ -1,4 +1,4 @@
 jax
 jaxlib
-numpy
+pennylane-sf
 pennylane-cirq
