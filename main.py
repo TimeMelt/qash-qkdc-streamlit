@@ -46,7 +46,7 @@ backend_details = side_panel.toggle("Show Runtime Details")
 seed_option = side_panel.number_input("Seed", value=0, format="%d")
 pad_length_option = side_panel.number_input("Length of Input Padding", value=0, format="%d")
 hash_precision = side_panel.selectbox("Hash Precision",('double','single'))
-simulator_option = side_panel.selectbox("Simulator",('superconductor'),on_change=clearOutput) # ,'fock', 'gaussian'
+simulator_option = side_panel.selectbox("Simulator",('superconductor','fock', 'gaussian'),on_change=clearOutput) # 
 if simulator_option == "superconductor":
     device_option = side_panel.selectbox("Device",('default','cirq'),on_change=clearOutput)
     if device_option != 'default':
