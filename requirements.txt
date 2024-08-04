@@ -1,5 +1,5 @@
-streamlit==1.37.0
 jax
 jaxlib
+pennylane==0.29
 pennylane-cirq
 pennylane-sf
