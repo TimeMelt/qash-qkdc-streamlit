@@ -1,4 +1,5 @@
-pennylane-sf
-pennylane-cirq
+scikit-learn
 jax
 jaxlib
+pennylane-sf
+pennylane-cirq
