@@ -1,5 +1,5 @@
 jax
 jaxlib
-pennylane
+strawberryfields
 pennylane-sf
 pennylane-cirq
