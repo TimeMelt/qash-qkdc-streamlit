@@ -1,4 +1,4 @@
-pennylane==0.29
+pennylane==0.28
 pennylane-cirq
 pennylane-sf
 jax
