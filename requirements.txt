@@ -1,6 +1,6 @@
 jax
 jaxlib
-scipy
 numpy
+strawberryfields
 pennylane-sf
 pennylane-cirq
