@@ -1,5 +1,5 @@
 jax
 jaxlib
-scipy
+pennylane
 pennylane-sf
 pennylane-cirq
