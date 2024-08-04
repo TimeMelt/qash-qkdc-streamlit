@@ -1,5 +1,5 @@
 jax
 jaxlib
-strawberryfields
+scikit-learn
 pennylane-sf
 pennylane-cirq
