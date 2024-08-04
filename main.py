@@ -3,7 +3,7 @@ from jax import numpy as jnp
 import photonic_cirq as p_cirq
 import super_cirq as s_cirq
 import qkdc_helper as helper
-import gaus_cirq as gaus
+#import gaus_cirq as gaus
 import numpy as np
 
 logo = "./img/ui-streamlit-red.png"
