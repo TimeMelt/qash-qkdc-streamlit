@@ -52,6 +52,7 @@ if device_option != 'default':
     shots = side_panel.number_input("Shots", value=0, format="%d")
 else: 
     shots = None
+pepper = None
 
 _ = """
 simulator_option = side_panel.selectbox("Simulator",('superconductor','fock', 'gaussian'),on_change=clearOutput) # 
