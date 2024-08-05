@@ -7,6 +7,8 @@ streamlit ui for qash-qkdc (quantum key derivation circuits)
 [![qash-qkdc-ui](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://qkdc-ui.streamlit.app/)
 
 ### Updates:
+- gaussian and fock features are commented out due to compatibility issues between streamlit-cloud and strawberryfields
+    - if running locally, you can uncomment lines 3,6,58-72 in main.py to take advantage of gaussian and fock backends
 - support for gradient calculation
 - single and double precision modes 
 - google cirq simulator now supported
