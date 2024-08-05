@@ -51,23 +51,21 @@ if device_option != 'default':
     shots = side_panel.number_input("Shots", value=0, format="%d")
 else: 
     shots = None
-"""
-simulator_option = side_panel.selectbox("Simulator",('superconductor','fock', 'gaussian'),on_change=clearOutput) # 
-if simulator_option == "superconductor":
-    device_option = side_panel.selectbox("Device",('default','cirq'),on_change=clearOutput)
-    if device_option != 'default':
-        shots = side_panel.number_input("Shots", value=0, format="%d")
-    else: 
-        shots = None
-elif simulator_option == "fock":
-    shots = side_panel.number_input("Shots", value=1, min_value=1, format="%d")
-output_mode = side_panel.selectbox("Output Mode",('hex','base64'))
-if simulator_option != 'gaussian':
-    pepper = side_panel.text_input("Pepper (comma-separated floats)", value="")
-else:
-    pepper = None
-    shots = None
-"""
+#simulator_option = side_panel.selectbox("Simulator",('superconductor','fock', 'gaussian'),on_change=clearOutput) # 
+#if simulator_option == "superconductor":
+#    device_option = side_panel.selectbox("Device",('default','cirq'),on_change=clearOutput)
+#    if device_option != 'default':
+#        shots = side_panel.number_input("Shots", value=0, format="%d")
+#    else: 
+#        shots = None
+#elif simulator_option == "fock":
+#    shots = side_panel.number_input("Shots", value=1, min_value=1, format="%d")
+#output_mode = side_panel.selectbox("Output Mode",('hex','base64'))
+#if simulator_option != 'gaussian':
+#    pepper = side_panel.text_input("Pepper (comma-separated floats)", value="")
+#else:
+#    pepper = None
+#    shots = None
 
 def runHash(pepp, shots):
     with st.spinner("Loading Hash, Please Wait..."):
