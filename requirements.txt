@@ -1,5 +1,3 @@
-scikit-learn
 jax
 pennylane
 pennylane-cirq
-strawberryfields
