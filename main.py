@@ -3,7 +3,7 @@ from jax import numpy as jnp
 #import photonic_cirq as p_cirq
 import super_cirq as s_cirq
 import qkdc_helper as helper
-import gaus_cirq as gaus
+#import gaus_cirq as gaus
 import numpy as np
 
 logo = "./img/ui-streamlit-red.png"
@@ -46,6 +46,12 @@ backend_details = side_panel.toggle("Show Runtime Details")
 seed_option = side_panel.number_input("Seed", value=0, format="%d")
 pad_length_option = side_panel.number_input("Length of Input Padding", value=0, format="%d")
 hash_precision = side_panel.selectbox("Hash Precision",('double','single'))
+device_option = side_panel.selectbox("Device",('default','cirq'),on_change=clearOutput)
+    if device_option != 'default':
+        shots = side_panel.number_input("Shots", value=0, format="%d")
+    else: 
+        shots = None
+"""
 simulator_option = side_panel.selectbox("Simulator",('superconductor','fock', 'gaussian'),on_change=clearOutput) # 
 if simulator_option == "superconductor":
     device_option = side_panel.selectbox("Device",('default','cirq'),on_change=clearOutput)
@@ -61,6 +67,7 @@ if simulator_option != 'gaussian':
 else:
     pepper = None
     shots = None
+"""
 
 def runHash(pepp, shots):
     with st.spinner("Loading Hash, Please Wait..."):
