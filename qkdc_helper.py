@@ -1,9 +1,10 @@
 from jax import config
-from jax.lib import xla_bridge
+#from jax.lib import xla_bridge
 from jax import numpy as jnp
 import struct
 from binascii import b2a_base64
 
+"""
 # switch on/off double precision float mode
 def x64Switch(x64):
     config.update("jax_enable_x64", x64)
@@ -13,9 +14,12 @@ def x64Switch(x64):
         str = "double-precision mode: disabled"
     return str
 
+
 # check whether cpu or gpu is used
 def getBackend():
     return xla_bridge.get_backend().platform
+    
+"""
 
 # process output of quantum circuits into proper hash
 def processOutput(output, format, float_mode):
