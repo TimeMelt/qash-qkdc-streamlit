@@ -53,6 +53,7 @@ if device_option != 'default':
 else: 
     shots = None
 pepper = None
+output_mode = side_panel.selectbox("Output Mode",('hex','base64'))
 
 _ = """
 simulator_option = side_panel.selectbox("Simulator",('superconductor','fock', 'gaussian'),on_change=clearOutput) # 
