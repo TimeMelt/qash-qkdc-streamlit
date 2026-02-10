@@ -1,4 +1,4 @@
-jax
-jaxlib
+jax==0.7.1
+jaxlib==0.7.1
 pennylane
 pennylane-cirq
