@@ -21,7 +21,7 @@ if 'output_hash' not in st.session_state:
 if 'grad_hash' not in st.session_state:
     st.session_state.grad_hash = ''
 
-x64_jax = helper.x64Switch(True)
+#x64_jax = helper.x64Switch(True)
 
 def clearOutput():
     st.session_state.output_hash = ''
@@ -126,8 +126,8 @@ if backend_details:
         main_panel.caption(f"platform: cpu")
     else:
         main_panel.caption(f"compute mode: jax")
-        main_panel.caption(f"{x64_jax}")
-        main_panel.caption(f"platform: {helper.getBackend()}")
+        #main_panel.caption(f"{x64_jax}")
+        #main_panel.caption(f"platform: {helper.getBackend()}")
 
 
 
