@@ -8,7 +8,7 @@ import qkdc_helper as helper
 def qxHashCirq(input, num_wires, seed, pepper, device, shots):
     key = random.PRNGKey(seed)
     if device == 'default':
-        qdev = qml.device('default.qubit.jax', wires=num_wires, shots=shots, prng_key=key)
+        qdev = qml.device('default.qubit', wires=num_wires, shots=shots, prng_key=key)
     else:
         qdev = qml.device('cirq.simulator', wires=num_wires, shots=shots)
 
